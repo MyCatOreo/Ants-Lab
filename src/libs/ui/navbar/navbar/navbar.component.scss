@@ -1,0 +1,79 @@
+@import "src/color-scheme.scss";
+
+.navbar {
+  height: 90px;
+  z-index: 100;
+  font-family: "Orbitron", sans-serif;
+
+  ul {
+    display: inline-flex;
+    li {
+      display: block;
+      text-align: center;
+      margin-left: 15px;
+      margin-right: 15px;
+      width: 100px;
+
+      span {
+        width: 80px;
+      }
+    }
+  }
+}
+
+.navbar-neon {
+  background-color: $grey-darker;
+  border-bottom: 4px double $grey-dark;
+}
+
+.navbar-logo {
+  height: 50px;
+  margin-top: 35px;
+
+  background-image: url("src/assets/ants_lab_logo_100x100.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.navbar-brand-button {
+  height: 30px;
+  width: 140px;
+  padding: inherit;
+  border-radius: 0px;
+  border: 1px solid $grey-light;
+  margin-top: 5px;
+  margin-right: 40px;
+}
+
+.navbar-button {
+  font-size: large;
+
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  border-radius: 0px;
+  border: 1px solid $grey-light;
+  margin-top: 90px;
+
+  &:hover {
+    color: $neon-blue;
+    border: 1px solid $neon-blue;
+
+    .navbar-button-text {
+      color: $neon-blue;
+      transition-duration: 200ms;
+    }
+  }
+
+  .navbar-button-text {
+    font-size: medium;
+    color: $grey-dark;
+    transition-duration: 200ms;
+
+    width: 100px;
+    top: -60px;
+    left: -35px;
+    text-align: center;
+    position: relative;
+  }
+}
