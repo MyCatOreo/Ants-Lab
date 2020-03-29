@@ -4,12 +4,9 @@ import { ModulePageComponent } from "./components/module-page/module-page.compon
 import { WikiPageComponent } from "src/libs/core/wiki/wiki-page/wiki-page.component";
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "lab/wiki" },
-  {
-    path: "lab",
-    component: ModulePageComponent,
-    children: [{ path: "wiki", component: WikiPageComponent }]
-  }
+  { path: "", pathMatch: "full", redirectTo: "wiki" },
+  { path: "wiki", component: WikiPageComponent },
+  { path: "wiki/:id", component: WikiPageComponent }
 ];
 
 @NgModule({

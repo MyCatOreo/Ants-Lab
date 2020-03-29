@@ -1,0 +1,19 @@
+@import "src/color-scheme.scss";
+
+.list {
+  min-height: 200px;
+  width: 200px;
+  border: double 4px $grey;
+  font-family: "Abel", sans-serif;
+
+  .list-item {
+    display: block;
+    text-align: center;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 5px;
+
+    color: $grey-light;
+    border-bottom: 1px solid $grey-dark;
+  }
+}

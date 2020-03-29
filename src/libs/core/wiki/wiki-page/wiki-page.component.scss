@@ -1,0 +1,23 @@
+@import "src/color-scheme.scss";
+
+.wiki-page-container {
+  display: grid;
+  grid-template-columns: 200px 20px auto;
+  grid-template-rows: 200px 20px auto;
+  grid-template-areas:
+    "list . table"
+    "list . ."
+    "list . item";
+}
+
+.wiki-list-wrapper {
+  grid-area: list;
+}
+
+.wiki-table-wrapper {
+  grid-area: table;
+}
+
+.wiki-item-wrapper {
+  grid-area: item;
+}
