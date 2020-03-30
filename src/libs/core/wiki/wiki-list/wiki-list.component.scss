@@ -1,13 +1,13 @@
 @import "src/color-scheme.scss";
 
 .list {
-  min-height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
   border: double 4px $grey;
   font-family: "Abel", sans-serif;
 
   .list-item {
-    display: block;
+    width: 100%;
     text-align: center;
     margin-left: 0;
     margin-right: auto;
@@ -15,5 +15,12 @@
 
     color: $grey-light;
     border-bottom: 1px solid $grey-dark;
+    border-radius: 0;
+
+    &:hover {
+      color: $neon-pink;
+      border: 1px solid $neon-pink;
+      transition: 200ms;
+    }
   }
 }
