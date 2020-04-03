@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WikiTableComponent } from './wiki-table.component';
+import { TaskWikiTableComponent } from './task-wiki-table.component';
 
-describe('WikiTableComponent', () => {
-  let component: WikiTableComponent;
-  let fixture: ComponentFixture<WikiTableComponent>;
+describe('TaskWikiTableComponent', () => {
+  let component: TaskWikiTableComponent;
+  let fixture: ComponentFixture<TaskWikiTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WikiTableComponent ]
+      declarations: [ TaskWikiTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WikiTableComponent);
+    fixture = TestBed.createComponent(TaskWikiTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

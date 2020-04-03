@@ -3,9 +3,14 @@
     <app-wiki-list></app-wiki-list>
   </div>
   <div class="wiki-table-wrapper">
-    <app-wiki-table></app-wiki-table>
+    <div class="wiki-table-container">
+      <router-outlet name="wiki-table"></router-outlet>
+    </div>
   </div>
   <div class="wiki-item-wrapper">
-    <app-wiki-item></app-wiki-item>
+    <div class="wiki-item-container">
+      <router-outlet></router-outlet>
+      <!-- Don't add a name for this outlet, or Angular will complain. How silly! -->
+    </div>
   </div>
 </div>

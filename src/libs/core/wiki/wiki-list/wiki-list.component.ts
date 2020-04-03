@@ -9,10 +9,12 @@ export class WikiListComponent implements OnInit {
   wikiList = [
     {
       name: "Food",
+      route: "food",
       desc: "Food in the world for ants to collect and consume"
     },
     {
       name: "Task",
+      route: "task",
       desc: "Task performed by ants to keep their life going"
     }
   ];

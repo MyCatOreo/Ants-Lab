@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WikiItemComponent } from './wiki-item.component';
+import { FoodWikiTableComponent } from './food-wiki-table.component';
 
-describe('WikiItemComponent', () => {
-  let component: WikiItemComponent;
-  let fixture: ComponentFixture<WikiItemComponent>;
+describe('FoodWikiTableComponent', () => {
+  let component: FoodWikiTableComponent;
+  let fixture: ComponentFixture<FoodWikiTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WikiItemComponent ]
+      declarations: [ FoodWikiTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WikiItemComponent);
+    fixture = TestBed.createComponent(FoodWikiTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

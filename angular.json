@@ -28,7 +28,7 @@
               "src/styles.scss",
               "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
-            "scripts": ["./node_modules/bootstrap/js/dist/index.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

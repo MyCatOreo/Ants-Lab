@@ -1,13 +1,29 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { ModulePageComponent } from "./components/module-page/module-page.component";
-import { WikiPageComponent } from "src/libs/core/wiki/wiki-page/wiki-page.component";
+import { Routes, RouterModule, ExtraOptions } from "@angular/router";
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "wiki" },
-  { path: "wiki", component: WikiPageComponent },
-  { path: "wiki/:id", component: WikiPageComponent }
+  { path: "world", redirectTo: "wiki" },
+  { path: "ant", redirectTo: "wiki" },
+  { path: "algorithm", redirectTo: "wiki" },
+  { path: "user", redirectTo: "wiki" },
+  { path: "", pathMatch: "full", redirectTo: "wiki" }
 ];
+
+const options: ExtraOptions = {
+  enableTracing: true
+  //useHash: false,
+  //initialNavigation?: InitialNavigation
+  //errorHandler?: ErrorHandler
+  //preloadingStrategy?: any
+  // onSameUrlNavigation: "reload",
+  // scrollPositionRestoration: "enabled",
+  // anchorScrolling: "enabled"
+  //scrollOffset?: [number, number] | (() => [number, number])
+  //paramsInheritanceStrategy?: 'emptyOnly' | 'always'
+  //malformedUriErrorHandler?: (error: URIError, urlSerializer: UrlSerializer, url: string) => UrlTree
+  //urlUpdateStrategy?: 'deferred' | 'eager'
+  //relativeLinkResolution?: 'legacy' | 'corrected'
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

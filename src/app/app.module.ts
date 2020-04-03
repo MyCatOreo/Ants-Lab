@@ -3,12 +3,17 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ModulePageComponent } from "./components/module-page/module-page.component";
-import { NavbarModule, MenuModule } from "src/libs/_index";
+import { NavbarModule, MenuModule, WikiModule } from "src/libs/_index";
 
 @NgModule({
-  declarations: [AppComponent, ModulePageComponent],
-  imports: [BrowserModule, AppRoutingModule, NavbarModule, MenuModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    NavbarModule,
+    MenuModule,
+    WikiModule,
+    AppRoutingModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

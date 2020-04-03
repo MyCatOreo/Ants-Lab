@@ -9,25 +9,43 @@
   <div class="collapse navbar-collapse" id="navbarsExample05">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <button type="button" class="btn btn-dark navbar-button">
+        <button
+          type="button"
+          class="btn btn-dark navbar-button"
+          routerLink="/world"
+        >
           <i class="far fa-map"></i>
           <div class="navbar-button-text">World</div>
         </button>
       </li>
+
       <li class="nav-item">
-        <button type="button" class="btn btn-dark navbar-button">
+        <button
+          type="button"
+          class="btn btn-dark navbar-button"
+          routerLink="/ant"
+        >
           <i class="fas fa-robot"></i>
           <div class="navbar-button-text">Ant</div>
         </button>
       </li>
+
       <li class="nav-item">
-        <button type="button" class="btn btn-dark navbar-button">
+        <button
+          type="button"
+          class="btn btn-dark navbar-button"
+          [routerLink]="['/algorithm']"
+        >
           <i class="fas fa-calculator"></i>
-          <div class="navbar-button-text">Alogrithm</div>
+          <div class="navbar-button-text">Algorithm</div>
         </button>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-dark navbar-button">
+        <button
+          type="button"
+          class="btn btn-dark navbar-button"
+          routerLink="/wiki"
+        >
           <i class="fas fa-book"></i>
           <div class="navbar-button-text">Wiki</div>
         </button>
@@ -36,7 +54,11 @@
     <div class="form-inline my-2 my-md-0">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <button type="button" class="btn btn-dark navbar-button">
+          <button
+            type="button"
+            class="btn btn-dark navbar-button"
+            routerLink="/user"
+          >
             <i class="far fa-user"></i>
             <div class="navbar-button-text">User</div>
           </button>

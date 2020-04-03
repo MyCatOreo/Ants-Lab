@@ -1,5 +1,9 @@
 <div class="list">
-  <button *ngFor="let item of wikiList" class="list-item btn btn-dark">
+  <button
+    *ngFor="let item of wikiList"
+    class="list-item btn btn-dark"
+    routerLink="{{ item.route }}"
+  >
     {{ item.name }}
   </button>
 </div>

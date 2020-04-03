@@ -21,3 +21,17 @@
 .wiki-item-wrapper {
   grid-area: item;
 }
+
+.wiki-table-container {
+  width: 100%;
+  height: 100%;
+  border: 4px double $grey;
+  border-radius: 0;
+}
+
+.wiki-item-container {
+  width: 100%;
+  height: 100%;
+  border: 4px double $grey;
+  border-radius: 0;
+}
