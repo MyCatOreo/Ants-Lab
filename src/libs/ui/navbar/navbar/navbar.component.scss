@@ -67,6 +67,25 @@
     }
   }
 
+  &.active {
+    color: $grey-light !important;
+    border: 1px solid $grey-light !important;
+
+    &:hover {
+      color: $neon-blue !important;
+      border: 1px solid $neon-blue !important;
+
+      .navbar-button-text {
+        color: $neon-blue;
+        transition-duration: 200ms;
+      }
+    }
+
+    .navbar-button-text {
+      color: $neon-blue;
+    }
+  }
+
   .navbar-button-text {
     font-size: medium;
     color: $grey-dark;
