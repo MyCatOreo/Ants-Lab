@@ -11,8 +11,11 @@
     text-align: center;
     margin-left: 0;
     margin-right: auto;
+    margin-top: 1px;
     padding: 5px;
+    box-shadow: none;
 
+    background-color: $grey-dark;
     color: $grey-light;
     border-bottom: 1px solid $grey-dark;
     border-radius: 0;
@@ -21,6 +24,16 @@
       color: $neon-pink;
       border: 1px solid $neon-pink;
       transition: 200ms;
+    }
+
+    &.active {
+      color: $neon-pink !important;
+      border-bottom: 1px solid $grey-dark !important;
+
+      &:hover {
+        color: $neon-pink !important;
+        border: 1px solid $neon-pink !important;
+      }
     }
   }
 }
