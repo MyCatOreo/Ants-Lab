@@ -4,6 +4,12 @@ export interface Task {
   description: string;
 }
 
+export const taskTableConfig = [
+  { field: "id", display: true },
+  { field: "name", display: true },
+  { field: "description", display: true },
+];
+
 export const mockupTask = [
   {
     id: 1,

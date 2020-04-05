@@ -17,6 +17,4 @@ export class FoodWikiTableComponent implements OnInit {
       this.foodList = mockupFoods;
     }
   }
-
-  _processColumns = (tableConfig: any[]) => {};
 }
