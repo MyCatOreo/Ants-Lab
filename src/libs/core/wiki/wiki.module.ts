@@ -7,6 +7,6 @@ import { WikiRoutingModule } from "./wiki-routing.module";
 @NgModule({
   declarations: [WikiPageComponent, WikiListComponent],
   imports: [CommonModule, WikiRoutingModule],
-  bootstrap: [WikiPageComponent]
+  bootstrap: [WikiPageComponent],
 })
 export class WikiModule {}

@@ -1,14 +1,1 @@
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col" *ngFor="let column of foodTableConfig">
-        {{ column.field }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of foodList">
-      <td *ngFor="let column of foodTableConfig">{{ row[column.field] }}</td>
-    </tr>
-  </tbody>
-</table>
+<app-table [tableData]="foodList" [tableConfig]="foodTableConfig"></app-table>
