@@ -6,11 +6,11 @@ const routes: Routes = [
   { path: "ant", redirectTo: "wiki" },
   { path: "algorithm", redirectTo: "wiki" },
   { path: "user", redirectTo: "wiki" },
-  { path: "", pathMatch: "full", redirectTo: "wiki" }
+  { path: "", pathMatch: "full", redirectTo: "wiki" },
 ];
 
 const options: ExtraOptions = {
-  enableTracing: true
+  enableTracing: true,
   //useHash: false,
   //initialNavigation?: InitialNavigation
   //errorHandler?: ErrorHandler
@@ -25,8 +25,9 @@ const options: ExtraOptions = {
   //relativeLinkResolution?: 'legacy' | 'corrected'
 };
 
+//Routing module
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

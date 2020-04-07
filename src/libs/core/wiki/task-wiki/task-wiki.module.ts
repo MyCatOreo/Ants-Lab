@@ -5,6 +5,7 @@ import { TaskWikiItemComponent } from "./task-wiki-item/task-wiki-item.component
 import { RouterModule } from "@angular/router";
 import { TableModule } from "src/libs/ui/table/table.module";
 
+//Routed module. Route: /wiki/task
 @NgModule({
   declarations: [TaskWikiTableComponent, TaskWikiItemComponent],
   imports: [

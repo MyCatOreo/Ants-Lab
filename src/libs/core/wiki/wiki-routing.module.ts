@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { WikiPageComponent } from "src/libs/core/wiki/wiki-page/wiki-page.component";
 
+//Routing module
 const routes: Routes = [
   {
     path: "wiki",
@@ -11,23 +12,24 @@ const routes: Routes = [
         path: "food", // I must import 1 module. So combine item and table
         loadChildren: () => {
           return import("src/libs/core/wiki/food-wiki/food-wiki.module").then(
-            m => m.FoodWikiModule
+            (m) => m.FoodWikiModule
           );
-        }
+        },
       },
       {
         path: "task",
         loadChildren: () =>
           import("src/libs/core/wiki/task-wiki/task-wiki.module").then(
-            m => m.TaskWikiModule
-          )
-      }
-    ]
-  }
+            (m) => m.TaskWikiModule
+          ),
+      },
+    ],
+  },
 ];
 
+//Routing module
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class WikiRoutingModule {}

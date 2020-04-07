@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarModule, MenuModule, WikiModule } from "src/libs/_index";
 
+//Domain module: top level module for the app
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -12,9 +13,9 @@ import { NavbarModule, MenuModule, WikiModule } from "src/libs/_index";
     NavbarModule,
     MenuModule,
     WikiModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

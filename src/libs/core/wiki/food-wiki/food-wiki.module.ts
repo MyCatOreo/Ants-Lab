@@ -5,6 +5,7 @@ import { FoodWikiItemComponent } from "./food-wiki-item/food-wiki-item.component
 import { RouterModule } from "@angular/router";
 import { TableModule } from "src/libs/_index";
 
+//Routed module. Route: /wiki/food
 @NgModule({
   declarations: [FoodWikiTableComponent, FoodWikiItemComponent],
   imports: [
