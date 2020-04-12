@@ -17,4 +17,8 @@ export class FoodWikiTableComponent implements OnInit {
       this.foodList = mockupFoods;
     }
   }
+
+  onFoodSelected(e) {
+    alert(e);
+  }
 }

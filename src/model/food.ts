@@ -23,7 +23,47 @@ export const mockupFoods = [
   },
   {
     id: 3,
-    name: "Braedcrumb",
+    name: "Breadcrumb",
+    stimulusC: 0.5,
+  },
+  {
+    id: 2,
+    name: "Dead Insect",
+    stimulusC: 2,
+  },
+  {
+    id: 3,
+    name: "Breadcrumb",
+    stimulusC: 0.5,
+  },
+  {
+    id: 2,
+    name: "Dead Insect",
+    stimulusC: 2,
+  },
+  {
+    id: 3,
+    name: "Breadcrumb",
+    stimulusC: 0.5,
+  },
+  {
+    id: 2,
+    name: "Dead Insect",
+    stimulusC: 2,
+  },
+  {
+    id: 3,
+    name: "Breadcrumb",
+    stimulusC: 0.5,
+  },
+  {
+    id: 2,
+    name: "Dead Insect",
+    stimulusC: 2,
+  },
+  {
+    id: 3,
+    name: "Breadcrumb",
     stimulusC: 0.5,
   },
 ];

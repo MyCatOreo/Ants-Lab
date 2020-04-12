@@ -3,7 +3,8 @@
 .navbar {
   height: 90px;
   z-index: 100;
-  font-family: "Orbitron", sans-serif;
+  @include font-button;
+  background-color: $grey-darker;
 
   ul {
     display: inline-flex;
@@ -43,45 +44,19 @@
   margin-top: 5px;
   margin-right: 40px;
   color: $grey-light;
+  background-color: $grey-darker;
 }
 
 .navbar-button {
-  font-size: large;
-  color: $grey-light;
+  @include button-standard($neon-blue);
 
   height: 30px;
   width: 30px;
   padding: 0;
-  @include square-border($grey-light);
   margin-top: 90px;
 
-  &:hover {
-    color: $neon-blue;
-    @include square-border($neon-blue);
-
-    .navbar-button-text {
-      color: $neon-blue;
-      transition-duration: 200ms;
-    }
-  }
-
   &.active {
-    color: $grey-light !important;
-    @include square-border($grey-light);
-
-    &:hover {
-      color: $neon-blue !important;
-      @include square-border($neon-blue);
-
-      .navbar-button-text {
-        color: $neon-blue;
-        transition-duration: 200ms;
-      }
-    }
-
-    .navbar-button-text {
-      color: $neon-blue;
-    }
+    @include button-standard($neon-blue);
   }
 
   .navbar-button-text {

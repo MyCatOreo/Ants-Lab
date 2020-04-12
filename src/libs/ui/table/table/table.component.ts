@@ -14,4 +14,8 @@ export class TableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  selectItem(id: number) {
+    this.itemSelected.emit(id);
+  }
 }

@@ -4,7 +4,7 @@
   height: 100%;
   width: 100%;
   border: double 4px $grey;
-  font-family: "Abel", sans-serif;
+  @include font-heading;
 
   .list-item {
     width: 100%;

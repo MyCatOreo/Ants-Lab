@@ -77,3 +77,55 @@ $red-darker: #380001;
   border-radius: 0px;
   border: 1px solid $color !important;
 }
+
+@mixin font-button() {
+  font-family: "Orbitron", sans-serif;
+}
+
+@mixin font-heading() {
+  font-family: "Abel", sans-serif;
+}
+
+@mixin font-text() {
+  font-family: "Abel", sans-serif;
+}
+
+@mixin button-standard($color) {
+  font-size: large;
+  color: $grey-light;
+  background-color: $grey-darker;
+  @include square-border($grey-light);
+  transition-duration: 200ms;
+
+  div {
+    color: $grey-light;
+    transition-duration: 200ms;
+  }
+
+  &:hover {
+    color: $color;
+    transition-duration: 200ms;
+    @include square-border($color);
+
+    div {
+      color: $color;
+      transition-duration: 200ms;
+    }
+  }
+
+  &.active {
+    &:hover {
+      div {
+        color: $color;
+        transition-duration: 200ms;
+      }
+    }
+
+    .navbar-button-text {
+      color: $neon-blue;
+    }
+  }
+}
+
+@mixin button-list {
+}

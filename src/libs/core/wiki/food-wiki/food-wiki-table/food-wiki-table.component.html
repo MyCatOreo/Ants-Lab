@@ -1,1 +1,5 @@
-<app-table [tableData]="foodList" [tableConfig]="foodTableConfig"></app-table>
+<app-table
+  [tableData]="foodList"
+  [tableConfig]="foodTableConfig"
+  (itemSelected)="onFoodSelected($event)"
+></app-table>

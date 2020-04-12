@@ -1,0 +1,57 @@
+@import "src/color-scheme.scss";
+
+.table {
+  background-color: transparent;
+  max-height: 35vh;
+
+  .body-block {
+    height: calc(35vh - 95px);
+    overflow-y: scroll;
+  }
+}
+
+.header-block {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-auto-columns: min-content;
+  grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+
+  .header-cell {
+    height: 40px;
+    padding: 5px;
+    padding-left: 15px;
+    border-bottom: 1px solid $grey-light;
+
+    @include font-text;
+    color: $grey-light;
+    font-weight: 500;
+  }
+}
+
+.body-row {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-auto-columns: min-content;
+  grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+
+  &:hover {
+    transition-duration: 200ms;
+    cursor: pointer;
+    .body-cell {
+      color: $neon-pink;
+    }
+  }
+
+  .body-cell {
+    height: 35px;
+    padding: 5px;
+    padding-left: 15px;
+    border-bottom: 1px solid $grey-light;
+
+    @include font-text;
+    color: $grey-light;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

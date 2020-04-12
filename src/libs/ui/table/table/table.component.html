@@ -1,14 +1,19 @@
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col" *ngFor="let column of tableConfig">
-        {{ column.field }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of tableData">
-      <td *ngFor="let column of tableConfig">{{ row[column.field] }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table">
+  <div class="header-block">
+    <div class="header-cell" *ngFor="let column of tableConfig">
+      {{ column.field }}
+    </div>
+  </div>
+
+  <div class="body-block">
+    <div class="body-row" *ngFor="let row of tableData">
+      <div
+        class="body-cell"
+        *ngFor="let column of tableConfig"
+        (click)="selectItem(row.id)"
+      >
+        {{ row[column.field] }}
+      </div>
+    </div>
+  </div>
+</div>
