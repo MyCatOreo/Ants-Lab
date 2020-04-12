@@ -90,12 +90,17 @@ $red-darker: #380001;
   font-family: "Abel", sans-serif;
 }
 
-@mixin button-standard($color) {
+@mixin button-no-text($color) {
+}
+
+@mixin button-standard-color($color) {
   font-size: large;
   color: $grey-light;
   background-color: $grey-darker;
   @include square-border($grey-light);
   transition-duration: 200ms;
+  outline: none;
+  -webkit-appearance: none;
 
   div {
     color: $grey-light;
@@ -113,6 +118,10 @@ $red-darker: #380001;
     }
   }
 
+  &:focus {
+    box-shadow: none;
+  }
+
   &.active {
     &:hover {
       div {
@@ -123,6 +132,28 @@ $red-darker: #380001;
 
     .navbar-button-text {
       color: $neon-blue;
+    }
+  }
+}
+
+@mixin button-standard-layout() {
+  height: 30px;
+  min-width: 100px;
+  width: fit-content;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  span {
+    position: relative;
+
+    i {
+      margin-right: 10px;
     }
   }
 }

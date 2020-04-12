@@ -36,23 +36,3 @@
   border: 4px double $grey;
   border-radius: 0;
 }
-
-.toolbar {
-  @include square-border($grey);
-  height: 50px;
-
-  .toolbar-button {
-    @include button-standard($neon-green);
-    display: flex;
-    height: 30px;
-    width: 140px;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    span {
-      position: relative;
-    }
-  }
-}

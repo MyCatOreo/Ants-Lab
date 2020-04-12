@@ -1,0 +1,6 @@
+@import "src/color-scheme.scss";
+
+.toolbar-button {
+  @include button-standard-color($neon-blue);
+  @include button-standard-layout();
+}

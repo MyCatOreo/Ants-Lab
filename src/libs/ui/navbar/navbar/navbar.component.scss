@@ -48,7 +48,7 @@
 }
 
 .navbar-button {
-  @include button-standard($neon-blue);
+  @include button-standard-color($neon-blue);
 
   height: 30px;
   width: 30px;
@@ -56,7 +56,7 @@
   margin-top: 90px;
 
   &.active {
-    @include button-standard($neon-blue);
+    @include button-standard-color($neon-blue);
   }
 
   .navbar-button-text {
