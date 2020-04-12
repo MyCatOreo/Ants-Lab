@@ -3,7 +3,7 @@
 .list {
   height: 100%;
   width: 100%;
-  border: double 4px $grey;
+  @include double-border();
   @include font-heading;
 
   .list-item {

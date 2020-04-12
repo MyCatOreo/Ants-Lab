@@ -1,12 +1,14 @@
 @import "src/color-scheme.scss";
 
 .toolbar {
-  @include square-border($grey);
+  @include double-border();
   height: 50px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
+  flex-direction: row;
+  justify-content: flex-start;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.toolbar-item {
 }

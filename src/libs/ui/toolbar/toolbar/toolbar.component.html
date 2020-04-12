@@ -1,3 +1,5 @@
 <div class="toolbar">
-  <app-button></app-button>
+  <div class="toolbar-item" *ngFor="let config of toolbarConfig">
+    <app-button></app-button>
+  </div>
 </div>

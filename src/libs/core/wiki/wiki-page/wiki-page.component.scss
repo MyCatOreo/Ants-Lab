@@ -17,8 +17,7 @@
 .wiki-table-wrapper {
   grid-area: table;
 
-  border: 4px double $grey;
-  border-radius: 0;
+  @include double-border();
 }
 
 .wiki-item-wrapper {
@@ -33,6 +32,6 @@
 .wiki-item-container {
   width: 100%;
   height: 100%;
-  border: 4px double $grey;
-  border-radius: 0;
+
+  @include double-border();
 }

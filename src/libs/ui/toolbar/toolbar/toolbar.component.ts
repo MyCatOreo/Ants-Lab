@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ToolbarConfig } from "src/types/toolbar-config";
 
 @Component({
   selector: "app-toolbar",
@@ -11,17 +12,4 @@ export class ToolbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-}
-
-interface ToolbarConfig {
-  name: string;
-  type: "button" | "filter" | "search";
-  label: "";
-  icon: string;
-  options: any[];
-  display: boolean;
-  align: "left" | "right";
-  onClick: (e) => {};
-  onBlur: (e) => {};
-  onSelect: (e) => {};
 }
