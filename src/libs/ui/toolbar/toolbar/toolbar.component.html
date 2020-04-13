@@ -1,5 +1,10 @@
 <div class="toolbar">
   <div class="toolbar-item" *ngFor="let config of toolbarConfig">
-    <app-button></app-button>
+    <app-button
+      [name]="config.name"
+      [label]="config.label"
+      [icon]="config.icon"
+      (onButtonClick)="handleButtonClick($event)"
+    ></app-button>
   </div>
 </div>

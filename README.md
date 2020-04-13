@@ -1,27 +1,18 @@
 # NgAntsLab
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+Just an Angular app for managing the Ants Lab project.
 
-## Development server
+# About the project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Everything starts from here... [Deborah Gordon Ted Talk - The emergent genius of ant colonies](https://www.ted.com/talks/deborah_gordon_the_emergent_genius_of_ant_colonies?language=en)
 
-## Code scaffolding
+More details in Deborah Gordon’s Book: [Ant Encounters: Interaction Networks and Colony Behavior](https://www.worldcat.org/title/ant-encounters-interaction-networks-and-colony-behavior/oclc/897036953&referer=brief_results)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Another good book for studying ants behavior and society: [Ant Ecology](https://www.worldcat.org/title/ant-ecology/oclc/934296799&referer=brief_results)
 
-## Build
+## VSCode Plug-ins
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Comment Anchors
+ESLint
+Prettier
+Angular Snippets

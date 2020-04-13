@@ -15,42 +15,44 @@ export class WikiPageComponent implements OnInit {
         name: "wiki-add",
         type: "button",
         label: "Add",
-        icon: "fas fas-plus",
-        display: true,
-        onClick: () => {
-          return this.onAddClick();
-        },
+        icon: "fas fa-plus",
       },
       {
         name: "wiki-delete",
         type: "button",
         label: "Delete",
-        icon: "fas fas-delete",
-        display: true,
-        onClick: () => {
-          return this.onDeleteClick();
-        },
+        icon: "fas fa-trash-alt",
       },
       {
         name: "wiki-add",
         type: "button",
         label: "Add",
-        icon: "fas fas-plus",
-        display: true,
-        onClick: () => {
-          return this.onAddClick();
-        },
+        icon: "fas fa-plus",
       },
     ];
   }
 
   ngOnInit(): void {}
 
-  onAddClick = () => {
+  handleToolbarButtonClick(e: any) {
+    //TODO: turn this into action
+    switch (e.name) {
+      case "wiki-add":
+        this.handleAddClick();
+        break;
+      case "wiki-delete":
+        this.handleDeleteClick();
+        break;
+      default:
+      //TODO: error
+    }
+  }
+
+  handleAddClick = () => {
     alert("add click");
   };
 
-  onDeleteClick = () => {
+  handleDeleteClick = () => {
     alert("delete click");
   };
 }
