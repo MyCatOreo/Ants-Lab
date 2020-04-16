@@ -24,10 +24,11 @@ export class WikiPageComponent implements OnInit {
         icon: "fas fa-trash-alt",
       },
       {
-        name: "wiki-add",
-        type: "button",
-        label: "Add",
-        icon: "fas fa-plus",
+        name: "wiki-search",
+        type: "search",
+        label: "Search",
+        icon: "fas fa-search",
+        rightAlign: true,
       },
     ];
   }

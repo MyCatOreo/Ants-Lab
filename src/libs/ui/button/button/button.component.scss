@@ -4,3 +4,35 @@
   @include button-standard-color($neon-blue);
   @include button-standard-layout();
 }
+
+.icon-button {
+  @include button-standard-color($neon-blue);
+  @include button-icon-layout();
+}
+
+.button-search-group {
+  .button-input {
+    @include square-border($grey-light);
+    transition-duration: 200ms;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    &:focus {
+      @include square-border($neon-blue);
+      transition-duration: 200ms;
+      outline: none;
+    }
+  }
+
+  &:hover {
+    .button-input {
+      @include square-border($neon-blue);
+      transition-duration: 200ms;
+    }
+
+    .icon-button {
+      @include square-border($neon-blue);
+      transition-duration: 200ms;
+    }
+  }
+}

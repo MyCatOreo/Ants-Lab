@@ -4,5 +4,5 @@ export interface ToolbarConfig {
   label: string;
   icon?: string;
   options?: any[];
-  align?: "left" | "right" | undefined;
+  rightAlign?: boolean;
 }

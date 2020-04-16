@@ -1,6 +1,11 @@
 <div class="toolbar">
-  <div class="toolbar-item" *ngFor="let config of toolbarConfig">
+  <div
+    class="toolbar-item"
+    [class.right-align]="config.rightAlign"
+    *ngFor="let config of toolbarConfig"
+  >
     <app-button
+      [type]="config.type"
       [name]="config.name"
       [label]="config.label"
       [icon]="config.icon"

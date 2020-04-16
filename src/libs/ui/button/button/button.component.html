@@ -1,3 +1,16 @@
-<button type="button" class="btn standard-button" (click)="clickButton()">
-  <span class="button-text"><i class="{{ icon }}"></i>{{ label }}</span>
-</button>
+<ng-container *ngIf="type === 'button'">
+  <button type="button" class="btn standard-button" (click)="clickButton()">
+    <span class="button-text"><i class="{{ icon }}"></i>{{ label }}</span>
+  </button>
+</ng-container>
+
+<ng-container *ngIf="type === 'search'">
+  <div class="input-group button-search-group">
+    <input type="text" class="button-input" placeholder="{{ label }}" />
+    <div class="input-group-append">
+      <button class="btn icon-button" type="button">
+        <span class="button-text"><i class="{{ icon }}"></i></span>
+      </button>
+    </div>
+  </div>
+</ng-container>

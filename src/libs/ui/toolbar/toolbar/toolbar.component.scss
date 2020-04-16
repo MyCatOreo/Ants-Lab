@@ -3,12 +3,19 @@
 .toolbar {
   @include double-border();
   height: 50px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   padding-left: 20px;
   padding-right: 20px;
-}
+  padding: 5px;
 
-.toolbar-item {
+  .toolbar-item {
+    margin: 5px;
+  }
+
+  .right-align {
+    margin-left: auto;
+  }
 }
