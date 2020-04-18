@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { mockupFoods, foodTableConfig, Food } from "src/model/food";
+import { mockupFoods, foodWikiConfig, Food } from "src/model/food";
 
 @Component({
   selector: "app-food-wiki-table",
@@ -10,7 +10,7 @@ export class FoodWikiTableComponent implements OnInit {
   constructor() {}
 
   @Input() foodList: Food[];
-  @Input() foodTableConfig = foodTableConfig;
+  @Input() foodWikiConfig = foodWikiConfig;
 
   ngOnInit(): void {
     if (!this.foodList) {

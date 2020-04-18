@@ -4,7 +4,7 @@ export interface Food {
   stimulusC: number;
 }
 
-export const foodTableConfig = [
+export const foodWikiConfig = [
   { field: "id", display: true },
   { field: "name", display: true },
   { field: "stimulusC", display: true },

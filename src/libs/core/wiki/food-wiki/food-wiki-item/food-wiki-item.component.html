@@ -1,1 +1,25 @@
-<p>food-wiki-item works!</p>
+<!-- [tableData]="foodList"
+[tableConfig]="foodWikiConfig" -->
+<form [formGroup]="foodWikiForm">
+  <label>
+    Name:
+    <input
+      name="name"
+      type="text"
+      formControlName="name"
+      [value]="'hello'"
+      (blur)="updateValue($event)"
+    />
+  </label>
+
+  <label>
+    stimulusC:
+    <input
+      name="stimulusC"
+      type="number"
+      formControlName="stimulusC"
+      [value]="2"
+      (blur)="updateValue($event)"
+    />
+  </label>
+</form>
