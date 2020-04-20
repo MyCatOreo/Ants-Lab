@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from "@angular/forms";
 import { foodWikiConfig } from "src/model/food";
 import { ToolbarConfig } from "src/types/_index";
 
@@ -13,15 +18,26 @@ export class FoodWikiItemComponent implements OnInit {
   @Input() selectedFoodId: number;
   toolbarConfig: ToolbarConfig[]; //TODO write a service
 
-  foodWikiForm = new FormGroup({
-    name: new FormControl(""),
-    stimulusC: new FormControl(""),
+  // foodWikiForm = new FormGroup({
+  //   name: new FormControl(),
+  //   stimulusC: new FormControl(),
+  // });
+  foodWikiForm = this.formBuilder.group({
+    name: ["", Validators.required],
+    stimulusC: [0, Validators.required],
   });
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //  this.foodWikiForm.setValue({ name: "hello world", stimulusC: 2 });
+    this.foodWikiForm.patchValue({ name: "goodbye world" });
+  }
   updateValue(e) {
     //  this.name.setValue(e.target.value);
+  }
+
+  onSubmit() {
+    alert("form submit!");
   }
 }

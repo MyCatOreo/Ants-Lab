@@ -1,13 +1,12 @@
 <!-- [tableData]="foodList"
 [tableConfig]="foodWikiConfig" -->
-<form [formGroup]="foodWikiForm">
+<form [formGroup]="foodWikiForm" (ngSubmit)="onSubmit()">
   <label>
     Name:
     <input
       name="name"
       type="text"
       formControlName="name"
-      [value]="'hello'"
       (blur)="updateValue($event)"
     />
   </label>
@@ -18,8 +17,16 @@
       name="stimulusC"
       type="number"
       formControlName="stimulusC"
-      [value]="2"
       (blur)="updateValue($event)"
     />
   </label>
+
+  <app-button
+    id="foodWikiSubmit"
+    type="submit"
+    name="foodWikiSubmit"
+    label="Update"
+    [disabled]="!foodWikiForm.valid"
+  ></app-button>
 </form>
+{{ foodWikiForm.status | json }}

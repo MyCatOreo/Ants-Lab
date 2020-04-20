@@ -1,5 +1,10 @@
 <ng-container *ngIf="type === 'button'">
-  <button type="button" class="btn standard-button" (click)="clickButton()">
+  <button
+    type="button"
+    class="btn standard-button"
+    [disabled]="disabled"
+    (click)="clickButton()"
+  >
     <span class="button-text"><i class="{{ icon }}"></i>{{ label }}</span>
   </button>
 </ng-container>
@@ -13,4 +18,11 @@
       </button>
     </div>
   </div>
+</ng-container>
+
+<ng-container *ngIf="type === 'submit'">
+  <button type="submit" class="btn standard-button" [disabled]="disabled">
+    <span class="button-text">{{ label }}</span>
+  </button>
+  <!-- [disabled]="!foodWikiForm.valid" -->
 </ng-container>
