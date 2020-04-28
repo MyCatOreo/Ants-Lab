@@ -67,3 +67,15 @@ export const mockupFoods = [
     stimulusC: 0.5,
   },
 ];
+
+export const mockupFoodItem1 = {
+  id: 1,
+  name: "Fresh Fruit",
+  stimulusC: 1,
+};
+
+export const mockupFoodItem2 = {
+  id: 2,
+  name: "Dead Insect",
+  stimulusC: 2,
+};
