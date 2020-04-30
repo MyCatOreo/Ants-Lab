@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { mockupFoodItem1, mockupFoodItem2 } from "src/model/food";
-import {
-  FormGeneratorService,
-  FormConfig,
-} from "src/services/form-generator.service";
+import { mockupFoodItem1, mockupFoodItem2, mockupFoods } from "src/model/food";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-food-wiki-item",
@@ -12,7 +9,9 @@ import {
   styleUrls: ["./food-wiki-item.component.scss"],
 })
 export class FoodWikiItemComponent implements OnInit {
-  selectedFoodId: number = 1;
+  selectedFoodId$: Observable<number>;
+
+  @Input() selectedFoodId: number = 2;
 
   foodWikiForm = this.formBuilder.group({
     name: ["", Validators.required],
@@ -23,17 +22,15 @@ export class FoodWikiItemComponent implements OnInit {
 
   ngOnInit(): void {
     //get the data
-    let foodEdit;
-    if (this.selectedFoodId === 1) {
-      foodEdit = mockupFoodItem1;
-    }
-    if (this.selectedFoodId === 2) {
-      foodEdit = mockupFoodItem2;
-    }
+    let foodEdit = mockupFoods.find((item) => item.id === this.selectedFoodId);
+    // if (this.selectedFoodId === 1) {
+    //   foodEdit = mockupFoodItem1;
+    // }
+    // if (this.selectedFoodId === 2) {
+    //   foodEdit = mockupFoodItem2;
+    // }
 
-    if (this.foodWikiForm) {
-      this.foodWikiForm.patchValue(foodEdit);
-    }
+    this.foodWikiForm.patchValue(foodEdit);
   }
 
   updateValue(e) {

@@ -18,7 +18,7 @@ export class FoodWikiTableComponent implements OnInit {
     }
   }
 
-  onFoodSelected(e) {
-    alert(e);
+  onFoodSelected(selectedId: number) {
+    alert(selectedId);
   }
 }
