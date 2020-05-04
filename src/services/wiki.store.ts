@@ -1,13 +1,22 @@
 import { Injectable } from "@angular/core";
 import { WikiModule } from "src/libs/_index";
-import { BehaviorSubject, Observable, throwError } from "rxjs";
-import { catchError, map, shareReplay, tap, find } from "rxjs/operators";
+import { BehaviorSubject, Observable, throwError, of } from "rxjs";
+import {
+  catchError,
+  map,
+  shareReplay,
+  tap,
+  find,
+  filter,
+  concatMap,
+  finalize,
+} from "rxjs/operators";
 import { Wiki, initWiki } from "src/model/_index";
 import { HttpClient } from "@angular/common/http";
 
 // The store manager for wiki data
 
-@Injectable({ providedIn: WikiModule }) //NOTE: come back
+@Injectable({ providedIn: "root" }) //NOTE: come back
 export class WikiStore {
   private wikiSubject = new BehaviorSubject<Wiki>(initWiki);
   //   class BehaviorSubject<T> extends Subject<T> {
@@ -45,14 +54,20 @@ export class WikiStore {
   }
 
   _loadInitWikiTable() {
-    this.loadWikiTable(initWiki[0].name);
+    this.loadWikiTable("food"); //TODO: get this from some list
   }
 
+  //get data for wiki table from server
   loadWikiTable(table: string) {
+    console.log("load wiki food table");
+    table = "food";
     const loadWikiTable$ = this.http
-      .get<Partial<Wiki>>(`localhost:3000/wiki/${table}`)
+      .get<any>(`http://localhost:3000/wiki/food`) //TODO: comeback for hardcode
       .pipe(
-        map((response) => response["payload"]),
+        map((response) => {
+          console.log("res", response);
+          return response;
+        }),
         catchError((err) => {
           const message = "Could not load wiki table";
           console.log(message, err);
@@ -66,10 +81,19 @@ export class WikiStore {
         }) //NOTE: tap - Perform a side effect for every emission on the source Observable, but return an Observable that is identical to the source.
       );
 
-    // this.loading.showLoaderUntilCompleted(loadWikiTable$).subscribe();
+    loadWikiTable$.subscribe();
+    //this.showLoaderUntilCompleted(loadWikiTable$).subscribe();
   }
 
-  loadWikiItem(table: string, id: number): Observable<any> {
+  showLoaderUntilCompleted<T>(obs$: Observable<T>): Observable<T> {
+    return of(null).pipe(
+      tap(() => console.log("loading")),
+      concatMap(() => obs$),
+      finalize(() => console.log("loading finish"))
+    );
+  }
+
+  getWikiItem(table: string, id: number): Observable<any> {
     return this.wiki$.pipe(
       map((data: Wiki) => data[table].items),
       find((item) => item.id === id)
@@ -80,11 +104,35 @@ export class WikiStore {
     return this.wiki$.pipe(map((data: Wiki) => data.selectedTable));
   }
 
-  setSelectedTable(table: string) {}
-
-  getSelectedItem(): Observable<number> {
-    return this.wiki$.pipe(map((data: Wiki) => data.selectedItem));
+  setSelectedTable(table: string) {
+    console.log("set selected table :", table);
+    this.wikiSubject.next({
+      ...this.wikiSubject.getValue(),
+      selectedTable: table,
+    });
+    if (this.wikiSubject.getValue()[table].items === undefined) {
+      this.loadWikiTable(table);
+    }
   }
 
-  setSelectedItem(id: number) {}
+  getSelectedItemId(): Observable<number> {
+    return this.wiki$.pipe(map((data: Wiki) => data.selectedItemId));
+  }
+
+  setSelectedItemId(id: number) {
+    console.log("set selected item :", id);
+    this.wikiSubject.next({
+      ...this.wikiSubject.getValue(),
+      selectedItemId: id,
+    });
+  }
+
+  getSelectedItem(): Observable<any> {
+    let table = this.wikiSubject.getValue().selectedTable;
+    let itemId = this.wikiSubject.getValue().selectedItemId;
+    return this.wiki$.pipe(
+      map((wiki: Wiki) => wiki[table].items || []),
+      find((item) => item.id === itemId)
+    );
+  }
 }

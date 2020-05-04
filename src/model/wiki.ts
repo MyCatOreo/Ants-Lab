@@ -3,16 +3,16 @@ import { Food } from "./food";
 
 export interface Wiki {
   selectedTable: string | undefined;
-  selectedItem: number | undefined;
+  selectedItemId: number | undefined;
   food: { items: Food[] };
   task: { items: Task[] };
 }
 
 export const initWiki = {
-  selectedTable: "",
-  selectedItem: undefined,
-  food: { items: [] },
-  task: { items: [] },
+  selectedTable: "food",
+  selectedItemId: 1,
+  food: { items: undefined },
+  task: { items: undefined },
 };
 
 export enum WikiTables {

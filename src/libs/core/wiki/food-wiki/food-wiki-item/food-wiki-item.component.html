@@ -18,7 +18,8 @@
       (blur)="updateValue($event)"
     />
   </label>
-
+  {{ selectedFoodId$ | async }}
+  {{ selectedFood$ | async | json }}
   <app-button
     id="foodWikiSubmit"
     type="submit"

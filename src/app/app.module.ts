@@ -4,6 +4,7 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarModule, MenuModule, WikiModule } from "src/libs/_index";
+import { HttpClientModule } from "@angular/common/http";
 
 //Domain module: top level module for the app
 @NgModule({
@@ -14,6 +15,7 @@ import { NavbarModule, MenuModule, WikiModule } from "src/libs/_index";
     MenuModule,
     WikiModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

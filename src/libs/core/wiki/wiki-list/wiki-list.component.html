@@ -2,9 +2,9 @@
   <button
     *ngFor="let item of wikiList"
     class="list-item btn"
-    routerLink="{{ item.route }}"
+    (click)="clickItem(item)"
     routerLinkActive="active"
   >
-    {{ item.name }}
+    {{ item.name | titlecase }}
   </button>
 </div>
