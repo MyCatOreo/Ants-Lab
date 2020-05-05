@@ -1,16 +1,6 @@
 import { Injectable } from "@angular/core";
-import { WikiModule } from "src/libs/_index";
 import { BehaviorSubject, Observable, throwError, of } from "rxjs";
-import {
-  catchError,
-  map,
-  shareReplay,
-  tap,
-  find,
-  filter,
-  concatMap,
-  finalize,
-} from "rxjs/operators";
+import { catchError, map, tap, concatMap, finalize } from "rxjs/operators";
 import { Wiki, initWiki } from "src/model/_index";
 import { HttpClient } from "@angular/common/http";
 
@@ -82,7 +72,6 @@ export class WikiStore {
       );
 
     loadWikiTable$.subscribe();
-    //this.showLoaderUntilCompleted(loadWikiTable$).subscribe();
   }
 
   showLoaderUntilCompleted<T>(obs$: Observable<T>): Observable<T> {
@@ -95,8 +84,7 @@ export class WikiStore {
 
   getWikiItem(table: string, id: number): Observable<any> {
     return this.wiki$.pipe(
-      map((data: Wiki) => data[table].items),
-      find((item) => item.id === id)
+      map((data: Wiki) => data[table].items.find((item) => item.id === id))
     );
   }
 
@@ -128,11 +116,15 @@ export class WikiStore {
   }
 
   getSelectedItem(): Observable<any> {
-    let table = this.wikiSubject.getValue().selectedTable;
-    let itemId = this.wikiSubject.getValue().selectedItemId;
     return this.wiki$.pipe(
-      map((wiki: Wiki) => wiki[table].items || []),
-      find((item) => item.id === itemId)
+      map((wiki: Wiki) => {
+        const table = this.wikiSubject.getValue().selectedTable;
+        const itemId = this.wikiSubject.getValue().selectedItemId;
+
+        return wiki[table].items
+          ? wiki[table].items.find((item) => item.id === itemId) //NOTE: ok...well...fine. find operator and array's find function are different things..
+          : [];
+      })
     );
   }
 }
