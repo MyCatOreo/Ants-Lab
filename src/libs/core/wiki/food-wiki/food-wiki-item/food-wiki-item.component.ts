@@ -1,14 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import {
-  mockupFoodItem1,
-  mockupFoodItem2,
-  mockupFoods,
-  Food,
-} from "src/model/food";
 import { Observable } from "rxjs";
 import { WikiStore } from "src/services/wiki.store";
 import { tap } from "rxjs/operators";
+import { WikiService } from "src/services/wiki.service";
 
 @Component({
   selector: "app-food-wiki-item",
@@ -17,31 +12,37 @@ import { tap } from "rxjs/operators";
 })
 export class FoodWikiItemComponent implements OnInit {
   selectedFood$: Observable<any>;
-  selectedFoodId$: Observable<number>;
 
   foodWikiForm = this.formBuilder.group({
+    id: [0],
     name: ["", Validators.required],
     stimulusC: [0, Validators.required],
   });
 
-  constructor(private formBuilder: FormBuilder, private wikiStore: WikiStore) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private wikiStore: WikiStore,
+    private wikiService: WikiService
+  ) {}
 
   ngOnInit(): void {
-    this.selectedFood$ = this.wikiStore.getSelectedItem();
-    // .pipe(
-    //   tap((food) => {
-    //     this.foodWikiForm.patchValue(food);
-    //     console.log("food ", food);
-    //   })
-    // );
-    this.selectedFoodId$ = this.wikiStore.getSelectedItemId();
+    this.selectedFood$ = this.wikiStore.getSelectedItem().pipe(
+      tap((food) => {
+        this.foodWikiForm.patchValue(food);
+      })
+    );
   }
 
-  updateValue(e) {
-    //  this.name.setValue(e.target.value);
+  updateValue(controlName: string, value: any) {
+    this.foodWikiForm.controls[controlName].setValue(value);
   }
 
   onSubmit() {
-    alert("form submit!");
+    console.log("submit food form with value ", this.foodWikiForm.value);
+    this.wikiService.postWikiItem(
+      this.foodWikiForm.value.id,
+      "food",
+      this.foodWikiForm.value
+    );
   }
 }

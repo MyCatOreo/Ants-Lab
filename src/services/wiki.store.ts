@@ -49,13 +49,12 @@ export class WikiStore {
 
   //get data for wiki table from server
   loadWikiTable(table: string) {
-    console.log("load wiki food table");
-    table = "food";
+    console.log(`load wiki table - ${table}`);
     const loadWikiTable$ = this.http
-      .get<any>(`http://localhost:3000/wiki/food`) //TODO: comeback for hardcode
+      .get<any>(`http://localhost:3000/wiki/${table}`) //TODO: comeback for hardcode
       .pipe(
         map((response) => {
-          console.log("res", response);
+          console.log(`loadWikiTable response`, response);
           return response;
         }),
         catchError((err) => {
