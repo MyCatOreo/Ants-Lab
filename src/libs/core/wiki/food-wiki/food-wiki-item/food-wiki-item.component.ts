@@ -31,6 +31,7 @@ export class FoodWikiItemComponent implements OnInit {
         this.foodWikiForm.patchValue(food);
       })
     );
+    this.selectedFood$.subscribe();
   }
 
   updateValue(controlName: string, value: any) {

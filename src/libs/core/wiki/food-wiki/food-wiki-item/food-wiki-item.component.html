@@ -1,14 +1,27 @@
 <form [formGroup]="foodWikiForm" (ngSubmit)="onSubmit()">
   <input hidden readonly name="id" type="number" formControlName="id" />
-  <label>
+  <!-- <label>
     Name:
-    <input name="name" type="text" formControlName="name" />
+    <input name="name1" type="text" formControlName="name1" />
   </label>
 
   <label>
     stimulusC:
-    <input name="stimulusC" type="number" formControlName="stimulusC" />
-  </label>
+    <input name="stimulusC1" type="number" formControlName="stimulusC1" />
+  </label> -->
+
+  <app-input
+    name="name"
+    type="text"
+    label="Name"
+    formControlName="name"
+  ></app-input>
+  <app-input
+    name="stimulusC"
+    type="text"
+    label="StimulusC"
+    formControlName="stimulusC"
+  ></app-input>
 
   <app-button
     id="foodWikiSubmit"
@@ -18,7 +31,7 @@
     [disabled]="!foodWikiForm.valid"
   ></app-button>
 </form>
-<!-- food: {{ selectedFood$ | async | json }}
+food: {{ selectedFood$ | async | json }}
 form:
 {{ foodWikiForm.value | json }}
-{{ foodWikiForm.status | json }} -->
+{{ foodWikiForm.status | json }}
