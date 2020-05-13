@@ -24,43 +24,34 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Input("value") _value = undefined; //NOTE: @Input('someInput') takes an input value named 'someInput' and map it to _someInput property.
-  onChange: any = () => {};
-  onTouched: any = () => {};
-
-  //NOTE: getter and setter:
-  get value() {
-    return this._value;
-  }
-
-  set value(val) {
-    this._value = val;
-    this.onChange(val);
-    this.onTouched();
-  }
-
   //=================
   //Implementing ControlValueAccessor interface
-  //NOTE Implementing Control Value Accessor: https://coryrylan.com/blog/angular-custom-form-controls-with-reactive-forms-and-ngmodel
+  //NOTE Implementing Control Value Accessor: https://www.youtube.com/watch?v=EY0Nw06xyt8
 
+  // set value from form controller's value to this component's value
+  value: any;
   writeValue(value: any) {
     if (value) {
       this.value = value;
     }
   }
 
-  //passes in a callback function as a parameter for us to call whenever the value has changed.
+  //store function passed in for (input) event. Trigger Form API to execute tasks for value change behavior
+  onChange: (e) => {};
   registerOnChange(fn: any) {
-    this.onChange = fn; //Set the property onChange to the callback, it will be called whenever our setter on the value property is called.
+    this.onChange = fn;
   }
 
-  //The registerOnTouched method passes back a callback to call whenever the user has touched the custom control.
-  //When we call this callback, it notifies Angular to apply the appropriate CSS classes and validation logic to our custom control.
+  //store function passed in for (blur) event. Trigger Form API to execute tasks for value touched behavior
+  onTouched: (e) => {};
   registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
 
-  setDisabledState() {}
+  disabled: boolean;
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
+  }
 
   //End of Implementing ControlValueAccessor interface
   //================
