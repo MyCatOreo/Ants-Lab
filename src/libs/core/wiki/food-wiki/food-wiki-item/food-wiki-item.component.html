@@ -13,11 +13,6 @@
     label="StimulusC"
     formControlName="stimulusC"
   ></app-input>
-  value {{ foodWikiForm.get("stimulusC").value | json }} touched
-  {{ foodWikiForm.get("stimulusC").touched | json }} dirty
-  {{ foodWikiForm.get("stimulusC").dirty | json }} error
-  {{ foodWikiForm.get("stimulusC").hasError("required") | json }} disabled
-  {{ foodWikiForm.get("stimulusC").disabled | json }}
   <app-button
     id="foodWikiSubmit"
     type="submit"
@@ -26,8 +21,3 @@
     [disabled]="!foodWikiForm.valid"
   ></app-button>
 </form>
-food: {{ selectedFood$ | async | json }}
-form:
-{{ foodWikiForm.value | json }}
-{{ foodWikiForm.status | json }}
-<button (click)="disableAll()">disable all</button>

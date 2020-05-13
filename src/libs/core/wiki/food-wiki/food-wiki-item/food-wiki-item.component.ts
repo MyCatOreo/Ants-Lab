@@ -46,11 +46,4 @@ export class FoodWikiItemComponent implements OnInit {
       this.foodWikiForm.value
     );
   }
-
-  disableAll() {
-    Object.keys(this.foodWikiForm.controls).forEach((key) => {
-      const control = this.foodWikiForm.get(key);
-      control.disable();
-    });
-  }
 }
