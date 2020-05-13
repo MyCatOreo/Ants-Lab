@@ -6,6 +6,7 @@ import { FoodWikiTableComponent } from "./food-wiki-table/food-wiki-table.compon
 import { FoodWikiItemComponent } from "./food-wiki-item/food-wiki-item.component";
 import { TableModule } from "src/libs/_index";
 import { ButtonModule } from "src/libs/ui/button/button.module";
+import { InputModule } from "src/libs/ui/input/input.module";
 
 //Routed module. Route: /wiki/food
 @NgModule({
@@ -16,6 +17,7 @@ import { ButtonModule } from "src/libs/ui/button/button.module";
     CommonModule,
     TableModule,
     ButtonModule,
+    InputModule,
     RouterModule.forChild([
       { path: "", outlet: "wiki-table", component: FoodWikiTableComponent },
       { path: "", component: FoodWikiItemComponent },

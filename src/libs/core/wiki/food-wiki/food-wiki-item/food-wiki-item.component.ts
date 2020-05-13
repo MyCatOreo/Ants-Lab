@@ -31,6 +31,7 @@ export class FoodWikiItemComponent implements OnInit {
         this.foodWikiForm.patchValue(food);
       })
     );
+    this.selectedFood$.subscribe();
   }
 
   updateValue(controlName: string, value: any) {
@@ -44,5 +45,12 @@ export class FoodWikiItemComponent implements OnInit {
       "food",
       this.foodWikiForm.value
     );
+  }
+
+  disableAll() {
+    Object.keys(this.foodWikiForm.controls).forEach((key) => {
+      const control = this.foodWikiForm.get(key);
+      control.disable();
+    });
   }
 }
