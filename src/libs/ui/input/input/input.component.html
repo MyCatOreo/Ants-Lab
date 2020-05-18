@@ -1,12 +1,30 @@
-<p>input works!</p>
-<label> {{ label }}:</label>
-<input
-  [name]="name"
-  [type]="type"
-  [value]="value"
-  [disabled]="disabled"
-  (input)="onChange($event.target.value)"
-  (blur)="onTouched($event.target.value)"
-/>
-<div (click)="clickHelp()"><i class="far fa-question-circle"></i></div>
-<div [ngClass]="{ showHelp: showHelp }">help text</div>
+<div class="input-wrapper">
+  <div class="label-container">
+    <label [ngClass]="{ highlight: highlightLabel }">{{ label }}</label>
+    <div class="help-icon" (mouseenter)="toggleHelp(true)">
+      <i class="fas fa-info-circle"></i>
+    </div>
+    <div [ngClass]="{ showHelp: !showHelp }">
+      <div class="help-card" (mouseleave)="toggleHelp(false)">
+        help text help text help text help text help text help text help text
+        help text help text help text
+      </div>
+    </div>
+  </div>
+  <div class="input-container">
+    <input
+      #input22
+      [name]="name"
+      [type]="type"
+      [value]="value"
+      [disabled]="disabled"
+      (input)="onChange($event.target.value)"
+      (blur)="onTouched($event.target.value)"
+      (focus)="toggleFocus(true)"
+      (focusout)="toggleFocus(false)"
+    />
+  </div>
+  <div *ngIf="errorMessage" class="message-container">
+    <span>{{ errorMessage }}</span>
+  </div>
+</div>

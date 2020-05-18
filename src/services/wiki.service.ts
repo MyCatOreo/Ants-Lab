@@ -9,8 +9,6 @@ export class WikiService {
   constructor(private httpClient: HttpClient, private wikiStore: WikiStore) {}
 
   postWikiItem(id: number, table: string, data: any) {
-    console.log("set wiki item - id：" + id, data);
-
     this.httpClient.post(`url/${table}/${id}`, data).pipe(
       catchError((err) => {
         const message = "Could not load wiki table";

@@ -83,6 +83,11 @@ $red-darker: #380001;
   border: 1px solid $color !important;
 }
 
+@mixin round-border($color) {
+  border-radius: 8px;
+  border: 1px solid $color !important;
+}
+
 @mixin font-button() {
   font-family: "Orbitron", sans-serif;
 }

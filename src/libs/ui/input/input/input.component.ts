@@ -17,8 +17,10 @@ export class InputComponent implements OnInit {
   @Input() name: string;
   @Input() type: "text" | "number";
   @Input() label: string;
+  @Input() errorMessage: string;
 
   showHelp: boolean = false;
+  highlightLabel: boolean = false;
 
   constructor() {}
 
@@ -56,7 +58,12 @@ export class InputComponent implements OnInit {
   //End of Implementing ControlValueAccessor interface
   //================
 
-  clickHelp() {
-    this.showHelp = !this.showHelp;
+  toggleHelp(isVisible: boolean) {
+    //TODO: pause 500ms before set to visible
+    this.showHelp = isVisible;
+  }
+
+  toggleFocus(isFocused: boolean) {
+    this.highlightLabel = isFocused;
   }
 }
