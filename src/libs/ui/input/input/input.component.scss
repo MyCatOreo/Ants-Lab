@@ -11,7 +11,9 @@ label {
 
   &.highlight {
     color: $neon-blue;
+    transition: 200ms;
   }
+  transition: 200ms;
 }
 
 .label-container {
@@ -29,12 +31,17 @@ input {
   color: $grey-lighter;
 
   &:focus {
-    border-bottom: 1px solid $neon-blue;
+    @include round-border($neon-blue);
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: $neon-blue;
+    transition: 200ms;
   }
+  transition: 200ms;
 
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
   border-bottom: 1px solid;
 
   width: 250px;
@@ -53,7 +60,6 @@ input {
   box-shadow: 0px 4px 15px $grey-darker;
   @include font-text;
   color: $grey-lighter;
-  //font-weight: bold;
 
   padding: 8px;
   max-width: 400px;

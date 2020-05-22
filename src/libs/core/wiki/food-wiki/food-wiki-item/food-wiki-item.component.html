@@ -13,11 +13,14 @@
     label="StimulusC"
     formControlName="stimulusC"
   ></app-input>
-  <app-button
-    id="foodWikiSubmit"
-    type="submit"
-    name="foodWikiSubmit"
-    label="Update"
-    [disabled]="!foodWikiForm.valid"
-  ></app-button>
+
+  <div class="btn-group">
+    <app-button
+      id="foodWikiSubmit"
+      type="submit"
+      name="foodWikiSubmit"
+      label="Update"
+      [disabled]="!foodWikiForm.valid"
+    ></app-button>
+  </div>
 </form>
