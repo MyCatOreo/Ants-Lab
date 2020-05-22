@@ -38,6 +38,11 @@ export class FoodWikiItemComponent implements OnInit {
     this.foodWikiForm.controls[controlName].setValue(value);
   }
 
+  //TODO: I don't like the way I implemented error display
+  getErrors(controlName: string) {
+    return this.foodWikiForm.controls[controlName].errors;
+  }
+
   onSubmit() {
     console.log("submit food form with value ", this.foodWikiForm.value);
     this.wikiService.postWikiItem(

@@ -1,5 +1,9 @@
 import { Component, forwardRef, Input, OnInit } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+} from "@angular/forms";
 
 @Component({
   selector: "app-input",
@@ -17,7 +21,7 @@ export class InputComponent implements OnInit {
   @Input() name: string;
   @Input() type: "text" | "number";
   @Input() label: string;
-  @Input() errorMessage: string;
+  @Input() errors: ValidationErrors[];
 
   showHelp: boolean = false;
   highlightLabel: boolean = false;

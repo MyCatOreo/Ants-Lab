@@ -6,12 +6,15 @@
     type="text"
     label="Name"
     formControlName="name"
+    [errors]="getErrors('name')"
   ></app-input>
+
   <app-input
     name="stimulusC"
     type="text"
     label="StimulusC"
     formControlName="stimulusC"
+    [errors]="getErrors('stimulusC')"
   ></app-input>
 
   <div class="btn-group">
