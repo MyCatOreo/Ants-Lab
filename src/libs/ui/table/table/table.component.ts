@@ -11,11 +11,14 @@ export class TableComponent implements OnInit {
 
   @Output() itemSelected: EventEmitter<number> = new EventEmitter();
 
+  selectedId: number;
+
   constructor() {}
 
   ngOnInit(): void {}
 
   selectItem(id: number) {
+    this.selectedId = id;
     this.itemSelected.emit(id);
   }
 }

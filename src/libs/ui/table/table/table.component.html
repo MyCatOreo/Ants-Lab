@@ -6,13 +6,18 @@
   </div>
 
   <div class="body-block">
-    <div class="body-row" *ngFor="let row of tableData">
+    <div *ngFor="let row of tableData">
       <div
-        class="body-cell"
-        *ngFor="let column of tableConfig"
-        (click)="selectItem(row.id)"
+        class="body-row"
+        [class.selected]="selectedId && selectedId === row.id"
       >
-        {{ row[column.field] }}
+        <div
+          class="body-cell"
+          *ngFor="let column of tableConfig"
+          (click)="selectItem(row.id)"
+        >
+          {{ row[column.field] }}
+        </div>
       </div>
     </div>
   </div>

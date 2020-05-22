@@ -33,10 +33,19 @@
   grid-auto-rows: min-content;
   grid-auto-columns: min-content;
   grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+  transition-duration: 200ms;
 
   &:hover {
     transition-duration: 200ms;
     cursor: pointer;
+    .body-cell {
+      color: $neon-pink;
+    }
+  }
+
+  &.selected {
+    transition-duration: 200ms;
+
     .body-cell {
       color: $neon-pink;
     }
