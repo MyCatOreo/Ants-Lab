@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Task, mockupTask, taskTableConfig } from "src/model/task";
+import { Task, mockupTask, taskWikiConfig } from "src/model/task";
 
 @Component({
   selector: "app-task-wiki-table",
@@ -10,7 +10,7 @@ export class TaskWikiTableComponent implements OnInit {
   constructor() {}
 
   @Input() taskList: Task[];
-  @Input() taskTableConfig = taskTableConfig;
+  @Input() taskWikiConfig = taskWikiConfig;
 
   ngOnInit(): void {
     if (!this.taskList) {

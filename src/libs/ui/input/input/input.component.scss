@@ -1,0 +1,66 @@
+@import "src/color-scheme.scss";
+
+.showHelp {
+  display: none;
+}
+
+label {
+  @include font-text;
+  color: $grey-light;
+  font-weight: 500;
+
+  &.highlight {
+    color: $neon-blue;
+    transition: 200ms;
+  }
+  transition: 200ms;
+}
+
+.label-container {
+  display: inline-flex;
+
+  .help-icon {
+    margin-left: 10px;
+    color: $neon-green-darker;
+  }
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  color: $grey-lighter;
+
+  &:focus {
+    @include round-border($neon-blue);
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: $neon-blue;
+    transition: 200ms;
+  }
+  transition: 200ms;
+
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid;
+
+  width: 250px;
+}
+
+.message-container {
+  @include font-text;
+  color: $neon-orange;
+}
+
+.help-card {
+  position: fixed;
+  margin-left: -20px;
+  @include round-border($neon-green-darker);
+  background-color: $neon-green-darker;
+  box-shadow: 0px 4px 15px $grey-darker;
+  @include font-text;
+  color: $grey-lighter;
+
+  padding: 8px;
+  max-width: 400px;
+}

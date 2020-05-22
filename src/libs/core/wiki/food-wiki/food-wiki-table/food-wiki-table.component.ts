@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { mockupFoods, foodTableConfig, Food } from "src/model/food";
+import { mockupFoods, foodWikiConfig, Food } from "src/model/food";
+import { WikiStore } from "src/services/wiki.store";
 
 @Component({
   selector: "app-food-wiki-table",
@@ -7,10 +8,10 @@ import { mockupFoods, foodTableConfig, Food } from "src/model/food";
   styleUrls: ["./food-wiki-table.component.scss"],
 })
 export class FoodWikiTableComponent implements OnInit {
-  constructor() {}
+  constructor(private wikiStore: WikiStore) {}
 
   @Input() foodList: Food[];
-  @Input() foodTableConfig = foodTableConfig;
+  @Input() foodWikiConfig = foodWikiConfig;
 
   ngOnInit(): void {
     if (!this.foodList) {
@@ -18,7 +19,7 @@ export class FoodWikiTableComponent implements OnInit {
     }
   }
 
-  onFoodSelected(e) {
-    alert(e);
+  onFoodSelected(selectedId: number) {
+    this.wikiStore.setSelectedItemId(selectedId);
   }
 }

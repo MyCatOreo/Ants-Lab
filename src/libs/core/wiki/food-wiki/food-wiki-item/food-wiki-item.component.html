@@ -1,1 +1,29 @@
-<p>food-wiki-item works!</p>
+<form [formGroup]="foodWikiForm" (ngSubmit)="onSubmit()">
+  <input hidden readonly name="id" type="number" formControlName="id" />
+
+  <app-input
+    name="name"
+    type="text"
+    label="Name"
+    formControlName="name"
+    [errors]="getErrors('name')"
+  ></app-input>
+
+  <app-input
+    name="stimulusC"
+    type="text"
+    label="StimulusC"
+    formControlName="stimulusC"
+    [errors]="getErrors('stimulusC')"
+  ></app-input>
+
+  <div class="btn-group">
+    <app-button
+      id="foodWikiSubmit"
+      type="submit"
+      name="foodWikiSubmit"
+      label="Update"
+      [disabled]="!foodWikiForm.valid"
+    ></app-button>
+  </div>
+</form>
