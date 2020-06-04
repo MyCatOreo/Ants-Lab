@@ -14,7 +14,7 @@ export class FoodWikiItemComponent implements OnInit {
   selectedFood$: Observable<any>;
 
   foodWikiForm = this.formBuilder.group({
-    id: [0],
+    id: [""],
     name: ["", Validators.required],
     stimulusC: [0, Validators.required],
   });
@@ -28,7 +28,7 @@ export class FoodWikiItemComponent implements OnInit {
   ngOnInit(): void {
     this.selectedFood$ = this.wikiStore.getSelectedItem().pipe(
       tap((food) => {
-        this.foodWikiForm.patchValue(food);
+        this.foodWikiForm.patchValue(food || {});
       })
     );
     this.selectedFood$.subscribe();

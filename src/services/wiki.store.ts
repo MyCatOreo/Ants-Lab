@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, throwError, of } from "rxjs";
 import { catchError, map, tap, concatMap, finalize } from "rxjs/operators";
 import { Wiki, initWiki } from "src/model/_index";
-import { HttpClient } from "@angular/common/http";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 // The store manager for wiki data
 
@@ -39,7 +39,7 @@ export class WikiStore {
   // }
   wiki$: Observable<Wiki> = this.wikiSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private db: AngularFirestore) {
     this._loadInitWikiTable();
   }
 
@@ -50,12 +50,15 @@ export class WikiStore {
   //get data for wiki table from server
   loadWikiTable(table: string) {
     console.log(`load wiki table - ${table}`);
-    const loadWikiTable$ = this.http
-      .get<any>(`http://localhost:3000/wiki/${table}`) //TODO: comeback for hardcode
+    const loadWikiTable$ = this.db
+      .collection(table)
+      .snapshotChanges()
       .pipe(
-        map((response) => {
-          console.log(`loadWikiTable response`, response);
-          return response;
+        map((snaps) => {
+          console.log(`loadWikiTable response`, snaps);
+          return snaps.map((snap: any) => {
+            return { id: snap.payload.doc.id, ...snap.payload.doc.data() };
+          });
         }),
         catchError((err) => {
           const message = "Could not load wiki table";
@@ -65,7 +68,7 @@ export class WikiStore {
         tap((loadWikiTable) => {
           this.wikiSubject.next({
             ...this.wikiSubject.getValue(),
-            [table]: loadWikiTable,
+            [table]: { items: loadWikiTable },
           });
         }) //NOTE: tap - Perform a side effect for every emission on the source Observable, but return an Observable that is identical to the source.
       );
@@ -81,7 +84,7 @@ export class WikiStore {
     );
   }
 
-  getWikiItem(table: string, id: number): Observable<any> {
+  getWikiItem(table: string, id: string): Observable<any> {
     return this.wiki$.pipe(
       map((data: Wiki) => data[table].items.find((item) => item.id === id))
     );
@@ -89,6 +92,10 @@ export class WikiStore {
 
   getSelectedTable(): Observable<string> {
     return this.wiki$.pipe(map((data: Wiki) => data.selectedTable));
+  }
+
+  getItemList(table: string): Observable<any[]> {
+    return this.wiki$.pipe(map((wiki: Wiki) => wiki[table].items));
   }
 
   setSelectedTable(table: string) {
@@ -102,11 +109,11 @@ export class WikiStore {
     }
   }
 
-  getSelectedItemId(): Observable<number> {
+  getSelectedItemId(): Observable<string> {
     return this.wiki$.pipe(map((data: Wiki) => data.selectedItemId));
   }
 
-  setSelectedItemId(id: number) {
+  setSelectedItemId(id: string) {
     console.log("set selected item :", id);
     this.wikiSubject.next({
       ...this.wikiSubject.getValue(),

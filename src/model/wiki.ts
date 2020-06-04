@@ -3,14 +3,14 @@ import { Food } from "./food";
 
 export interface Wiki {
   selectedTable: string | undefined;
-  selectedItemId: number | undefined;
+  selectedItemId: string | undefined;
   food: { items: Food[] };
   task: { items: Task[] };
 }
 
 export const initWiki = {
   selectedTable: "food",
-  selectedItemId: 1,
+  selectedItemId: "",
   food: { items: undefined },
   task: { items: undefined },
 };

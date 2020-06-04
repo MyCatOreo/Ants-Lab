@@ -1,5 +1,5 @@
 export interface Food {
-  id: number;
+  id: string;
   name: string;
   stimulusC: number;
 }
@@ -9,73 +9,3 @@ export const foodWikiConfig = [
   { field: "name", display: true },
   { field: "stimulusC", display: true },
 ];
-
-export const mockupFoods = [
-  {
-    id: 1,
-    name: "Fresh Fruit",
-    stimulusC: 1,
-  },
-  {
-    id: 2,
-    name: "Dead Insect",
-    stimulusC: 2,
-  },
-  {
-    id: 3,
-    name: "Breadcrumb",
-    stimulusC: 0.5,
-  },
-  {
-    id: 2,
-    name: "Dead Insect",
-    stimulusC: 2,
-  },
-  {
-    id: 3,
-    name: "Breadcrumb",
-    stimulusC: 0.5,
-  },
-  {
-    id: 2,
-    name: "Dead Insect",
-    stimulusC: 2,
-  },
-  {
-    id: 3,
-    name: "Breadcrumb",
-    stimulusC: 0.5,
-  },
-  {
-    id: 2,
-    name: "Dead Insect",
-    stimulusC: 2,
-  },
-  {
-    id: 3,
-    name: "Breadcrumb",
-    stimulusC: 0.5,
-  },
-  {
-    id: 2,
-    name: "Dead Insect",
-    stimulusC: 2,
-  },
-  {
-    id: 3,
-    name: "Breadcrumb",
-    stimulusC: 0.5,
-  },
-];
-
-export const mockupFoodItem1 = {
-  id: 1,
-  name: "Fresh Fruit",
-  stimulusC: 1,
-};
-
-export const mockupFoodItem2 = {
-  id: 2,
-  name: "Dead Insect",
-  stimulusC: 2,
-};
