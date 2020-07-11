@@ -26,7 +26,7 @@ export class FoodWikiItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.selectedFood$ = this.wikiStore.getSelectedItem().pipe(
+    this.selectedFood$ = this.wikiStore.subscribeSelectedItem().pipe(
       tap((food) => {
         this.foodWikiForm.patchValue(food || {});
       })

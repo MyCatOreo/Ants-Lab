@@ -28,7 +28,7 @@ export class WikiListComponent implements OnInit {
   ngOnInit(): void {}
 
   clickItem(item: any) {
-    this.wikiStore.setSelectedTable(item.name);
+    this.wikiStore.setSelectedTableName(item.name);
     this.router.navigate(["/", "wiki", item.name], { relativeTo: this.route });
   }
 }

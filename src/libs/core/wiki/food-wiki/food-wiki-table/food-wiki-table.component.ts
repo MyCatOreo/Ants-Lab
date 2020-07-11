@@ -16,7 +16,7 @@ export class FoodWikiTableComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.foodList$) {
-      this.foodList$ = this.wikiStore.getItemList("food");
+      this.foodList$ = this.wikiStore.subscribeTable("food");
     }
   }
 
