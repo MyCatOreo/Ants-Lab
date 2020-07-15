@@ -16,7 +16,7 @@ export class WikiService {
         return throwError(err); //NOTE
       }),
       tap(() => {
-        this.wikiStore.streamWikiTable(table);
+        this.wikiStore.getLatestWikiTable(table);
       })
     );
   }
