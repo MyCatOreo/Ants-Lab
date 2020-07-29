@@ -45,10 +45,10 @@ export class FoodWikiItemComponent implements OnInit {
 
   onSubmit() {
     console.log("submit food form with value ", this.foodWikiForm.value);
-    this.wikiService.postWikiItem(
-      this.foodWikiForm.value.id,
-      "food",
-      this.foodWikiForm.value
-    );
+    this.wikiService
+      .postWikiItem(this.foodWikiForm.value.id, "food", this.foodWikiForm.value)
+      .subscribe((res) => {
+        this.wikiStore.getLatestWikiTable("food");
+      });
   }
 }

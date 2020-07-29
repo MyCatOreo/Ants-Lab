@@ -15,8 +15,6 @@ export class TaskWikiTableComponent implements OnInit {
   @Input() taskWikiConfig = taskWikiConfig;
 
   ngOnInit(): void {
-    if (!this.taskList$) {
-      this.taskList$ = this.wikiStore.subscribeTable("task");
-    }
+    this.taskList$ = this.wikiStore.subscribeTable("task");
   }
 }

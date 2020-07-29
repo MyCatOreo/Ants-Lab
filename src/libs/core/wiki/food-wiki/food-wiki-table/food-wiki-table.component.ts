@@ -15,9 +15,7 @@ export class FoodWikiTableComponent implements OnInit {
   @Input() foodWikiConfig = foodWikiConfig;
 
   ngOnInit(): void {
-    if (!this.foodList$) {
-      this.foodList$ = this.wikiStore.subscribeTable("food");
-    }
+    this.foodList$ = this.wikiStore.subscribeTable("food");
   }
 
   onFoodSelected(selectedId: string) {

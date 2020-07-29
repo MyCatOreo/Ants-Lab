@@ -30,7 +30,7 @@ export class WikiStore {
   // 2. Subscribe motheds
 
   _getLatestInitWikiTable() {
-    this.getLatestWikiTable("food", true); //TODO: get this from some list
+    this.getLatestWikiTable("food"); //TODO: get this from some list
   }
 
   /**
@@ -38,14 +38,14 @@ export class WikiStore {
    * Observer get 1st value then complete
    * @param table
    */
-  getLatestWikiTable(table: string, once?: boolean) {
+  getLatestWikiTable(table: string) {
     console.log(`get latest wiki table - ${table}`);
     const latestWikiTable$ = this.db
       .collection(table)
       .snapshotChanges()
       .pipe(
         map((snaps) => {
-          console.log(`getLatestWikiTable response`, snaps);
+          console.log("snaps", snaps);
           return snaps.map((snap: any) => {
             return { id: snap.payload.doc.id, ...snap.payload.doc.data() };
           });
@@ -57,10 +57,12 @@ export class WikiStore {
           return throwError(err); //NOTE
         }),
         tap((latestWikiTable) => {
+          console.log("tap", latestWikiTable);
           this.wikiSubject.next({
             ...this.wikiSubject.getValue(),
             [table]: { items: latestWikiTable },
           });
+          console.log(this.wikiSubject.value);
         }) //NOTE: tap - Perform a side effect for every emission on the source Observable, but return an Observable that is identical to the source.
       );
 
@@ -112,7 +114,7 @@ export class WikiStore {
       selectedTable: tableName,
     });
     if (this.wikiSubject.getValue()[tableName].items === undefined) {
-      this.getLatestWikiTable(tableName, true);
+      this.getLatestWikiTable(tableName);
     }
   }
 
@@ -123,12 +125,4 @@ export class WikiStore {
       selectedItemId: id,
     });
   }
-
-  // showLoaderUntilCompleted<T>(obs$: Observable<T>): Observable<T> {
-  //   return of(null).pipe(
-  //     tap(() => console.log("loading")),
-  //     concatMap(() => obs$),
-  //     finalize(() => console.log("loading finish"))
-  //   );
-  // }
 }

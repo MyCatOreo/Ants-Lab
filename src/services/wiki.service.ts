@@ -1,23 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { WikiStore } from "./wiki.store";
-import { throwError } from "rxjs";
+import { throwError, from } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Injectable({ providedIn: "root" })
 export class WikiService {
-  constructor(private httpClient: HttpClient, private wikiStore: WikiStore) {}
+  constructor(private db: AngularFirestore, private wikiStore: WikiStore) {}
 
   postWikiItem(id: number, table: string, data: any) {
-    this.httpClient.post(`url/${table}/${id}`, data).pipe(
-      catchError((err) => {
-        const message = "Could not load wiki table";
-        console.log(message, err);
-        return throwError(err); //NOTE
-      }),
-      tap(() => {
-        this.wikiStore.getLatestWikiTable(table);
-      })
-    );
+    return from(this.db.doc(`${table}/${id}`).update(data));
   }
 }

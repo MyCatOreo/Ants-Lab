@@ -29,7 +29,7 @@ var firebaseConfig = {
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule, // firestore
+    AngularFirestoreModule.enablePersistence(), // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     NavbarModule,
