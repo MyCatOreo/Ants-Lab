@@ -39,13 +39,11 @@ export class WikiStore {
    * @param table
    */
   getLatestWikiTable(table: string) {
-    console.log(`get latest wiki table - ${table}`);
     const latestWikiTable$ = this.db
-      .collection(table)
+      .collection(table, (ref) => ref.where("active", "==", true))
       .snapshotChanges()
       .pipe(
         map((snaps) => {
-          console.log("snaps", snaps);
           return snaps.map((snap: any) => {
             return { id: snap.payload.doc.id, ...snap.payload.doc.data() };
           });
@@ -57,12 +55,10 @@ export class WikiStore {
           return throwError(err); //NOTE
         }),
         tap((latestWikiTable) => {
-          console.log("tap", latestWikiTable);
           this.wikiSubject.next({
             ...this.wikiSubject.getValue(),
             [table]: { items: latestWikiTable },
           });
-          console.log(this.wikiSubject.value);
         }) //NOTE: tap - Perform a side effect for every emission on the source Observable, but return an Observable that is identical to the source.
       );
 
@@ -108,7 +104,6 @@ export class WikiStore {
 
   // 5. Setters
   setSelectedTableName(tableName: string) {
-    console.log("set selected table :", tableName);
     this.wikiSubject.next({
       ...this.wikiSubject.getValue(),
       selectedTable: tableName,

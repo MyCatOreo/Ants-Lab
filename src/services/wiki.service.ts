@@ -9,7 +9,11 @@ import { AngularFirestore } from "@angular/fire/firestore";
 export class WikiService {
   constructor(private db: AngularFirestore, private wikiStore: WikiStore) {}
 
-  postWikiItem(id: number, table: string, data: any) {
+  postWikiItem(id: string, table: string, data: any) {
     return from(this.db.doc(`${table}/${id}`).update(data));
+  }
+
+  deleteWikiItem(id: string, table: string) {
+    return from(this.db.doc(`${table}/${id}`).update({ active: false }));
   }
 }
