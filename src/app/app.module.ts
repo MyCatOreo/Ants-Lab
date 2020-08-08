@@ -29,7 +29,7 @@ var firebaseConfig = {
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule.enablePersistence(), // firestore
+    AngularFirestoreModule, // firestore: enablePersistence() offline mode. may cause issue
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     NavbarModule,
