@@ -1,5 +1,5 @@
 <app-table
-  [tableData]="foodList"
+  [tableData]="foodList$ | async"
   [tableConfig]="foodWikiConfig"
   (itemSelected)="onFoodSelected($event)"
 ></app-table>

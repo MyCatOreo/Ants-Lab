@@ -1,5 +1,5 @@
 export interface Task {
-  id: number;
+  id: string;
   name: string;
   description: string;
 }
@@ -8,27 +8,4 @@ export const taskWikiConfig = [
   { field: "id", display: true },
   { field: "name", display: true },
   { field: "description", display: true },
-];
-
-export const mockupTask = [
-  {
-    id: 1,
-    name: "Nurture",
-    description: "to do",
-  },
-  {
-    id: 2,
-    name: "Construction",
-    description: "to do",
-  },
-  {
-    id: 3,
-    name: "Forage",
-    description: "to do",
-  },
-  {
-    id: 4,
-    name: "Patrol",
-    description: "to do",
-  },
 ];

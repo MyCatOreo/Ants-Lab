@@ -14,7 +14,7 @@ export class FoodWikiItemComponent implements OnInit {
   selectedFood$: Observable<any>;
 
   foodWikiForm = this.formBuilder.group({
-    id: [0],
+    id: [""],
     name: ["", Validators.required],
     stimulusC: [0, Validators.required],
   });
@@ -26,9 +26,9 @@ export class FoodWikiItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.selectedFood$ = this.wikiStore.getSelectedItem().pipe(
+    this.selectedFood$ = this.wikiStore.subscribeSelectedItem().pipe(
       tap((food) => {
-        this.foodWikiForm.patchValue(food);
+        this.foodWikiForm.patchValue(food || {});
       })
     );
     this.selectedFood$.subscribe();
@@ -45,10 +45,15 @@ export class FoodWikiItemComponent implements OnInit {
 
   onSubmit() {
     console.log("submit food form with value ", this.foodWikiForm.value);
-    this.wikiService.postWikiItem(
-      this.foodWikiForm.value.id,
-      "food",
-      this.foodWikiForm.value
-    );
+    this.wikiService
+      .postWikiItem(this.foodWikiForm.value.id, "food", this.foodWikiForm.value)
+      .subscribe(
+        () => {
+          this.wikiStore.getLatestWikiTable("food");
+        },
+        (error) => {
+          console.log("error submit food wiki item", error);
+        }
+      );
   }
 }

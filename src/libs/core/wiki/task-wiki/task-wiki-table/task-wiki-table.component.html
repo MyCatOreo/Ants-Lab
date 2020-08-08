@@ -1,1 +1,4 @@
-<app-table [tableData]="taskList" [tableConfig]="taskWikiConfig"></app-table>
+<app-table
+  [tableData]="taskList$ | async"
+  [tableConfig]="taskWikiConfig"
+></app-table>

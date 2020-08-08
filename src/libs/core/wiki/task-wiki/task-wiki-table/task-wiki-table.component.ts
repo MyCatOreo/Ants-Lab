@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Task, mockupTask, taskWikiConfig } from "src/model/task";
+import { Task, taskWikiConfig } from "src/model/task";
+import { Observable } from "rxjs";
+import { WikiStore } from "src/services/wiki.store";
 
 @Component({
   selector: "app-task-wiki-table",
@@ -7,14 +9,12 @@ import { Task, mockupTask, taskWikiConfig } from "src/model/task";
   styleUrls: ["./task-wiki-table.component.scss"],
 })
 export class TaskWikiTableComponent implements OnInit {
-  constructor() {}
+  constructor(private wikiStore: WikiStore) {}
 
-  @Input() taskList: Task[];
+  @Input() taskList$: Observable<Task[]>;
   @Input() taskWikiConfig = taskWikiConfig;
 
   ngOnInit(): void {
-    if (!this.taskList) {
-      this.taskList = mockupTask;
-    }
+    this.taskList$ = this.wikiStore.subscribeTable("task");
   }
 }

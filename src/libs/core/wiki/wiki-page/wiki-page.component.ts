@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ToolbarConfig } from "src/types/_index";
+import { WikiService } from "src/services/wiki.service";
+import { WikiStore } from "src/services/wiki.store";
 
 @Component({
   selector: "app-wiki-page",
@@ -9,7 +11,7 @@ import { ToolbarConfig } from "src/types/_index";
 export class WikiPageComponent implements OnInit {
   toolbarConfig: ToolbarConfig[]; //TODO write a service
 
-  constructor() {
+  constructor(private wikiStore: WikiStore, private wikiService: WikiService) {
     this.toolbarConfig = [
       {
         name: "wiki-add",
@@ -54,6 +56,16 @@ export class WikiPageComponent implements OnInit {
   };
 
   handleDeleteClick = () => {
-    alert("delete click");
+    let selectedTable;
+    let selectedItem;
+    this.wikiStore
+      .subscribeSelectedTable()
+      .subscribe((res) => (selectedTable = res));
+    this.wikiStore
+      .subscribeSelectedItemId()
+      .subscribe((res) => (selectedItem = res));
+    this.wikiService
+      .deleteWikiItem(selectedItem, selectedTable)
+      .subscribe(() => this.wikiStore.getLatestWikiTable(selectedTable));
   };
 }
