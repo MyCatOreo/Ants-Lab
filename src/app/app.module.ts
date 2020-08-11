@@ -10,6 +10,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { HomeModule } from "src/libs/core/home/home.module";
 
 //TODO: move this somewhere
 var firebaseConfig = {
@@ -34,6 +35,7 @@ var firebaseConfig = {
     AngularFireStorageModule, // storage
     NavbarModule,
     MenuModule,
+    HomeModule,
     WikiModule,
     AppRoutingModule,
     HttpClientModule,

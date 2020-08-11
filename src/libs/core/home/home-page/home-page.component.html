@@ -1,0 +1,17 @@
+<div class="home-page-container">
+  <app-button
+    id="runButton"
+    type="button"
+    name="runButton"
+    label="Run"
+    [disabled]="'false'"
+  ></app-button>
+
+  <div class="canvas-container">
+    <canvas id="homeCanvas" height="125" width="1000" #homeCanvas></canvas>
+  </div>
+
+  <div class="console-container">
+    {{ console | json }}
+  </div>
+</div>
