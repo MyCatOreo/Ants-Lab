@@ -27,13 +27,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.canvas = this.homeCanvas.nativeElement.getContext("2d");
     if (this.canvas) {
       //  this.canvas.imageSmoothingEnabled = false;
-      this.canvasService.clear(this.canvas);
-      this.canvasService.drawBackground(this.canvas);
-      this.canvasService.drawNest(this.canvas);
-
-      //loop these
-      this.canvasService.drawFood(this.canvas);
-      this.canvasService.drawAnt(this.canvas);
+      this.canvasService.start(this.canvas);
     }
   }
 }

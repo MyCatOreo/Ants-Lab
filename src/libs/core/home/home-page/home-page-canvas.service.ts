@@ -9,6 +9,8 @@ export class HomeCnavasService {
   ants: Ant[];
   nodes: any[];
   edges: any[];
+  nestCenter: { x: number; y: number };
+  canvas: CanvasRenderingContext2D;
 
   SCALE = 5;
   WIDTH = 200;
@@ -20,45 +22,139 @@ export class HomeCnavasService {
     this.edges = edges;
   }
 
-  clear(ctx: CanvasRenderingContext2D) {
-    ctx.clearRect(0, 0, this.WIDTH * this.SCALE, this.HEIGHT * this.SCALE);
+  start(ctx: CanvasRenderingContext2D) {
+    this.canvas = ctx;
+    this.clear();
+    this.nestCenter = {
+      x: Math.round(Math.random() * this.WIDTH - 3) + 1,
+      y: Math.round(Math.random() * (this.HEIGHT - 3)) + 1,
+    };
+    this.drawBackground();
+
+    this.drawNest();
+
+    while (!this.drawFood()) {
+      this.drawFood();
+    }
+    while (!this.drawFood()) {
+      this.drawFood();
+    }
+    while (!this.drawFood()) {
+      this.drawFood();
+    }
+
+    //loop
+    this.drawAnt();
   }
 
-  drawBackground(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#202124";
+  clear() {
+    this.canvas.clearRect(
+      0,
+      0,
+      this.WIDTH * this.SCALE,
+      this.HEIGHT * this.SCALE
+    );
+  }
+
+  drawBackground() {
+    this.canvas.fillStyle = "#202124";
     this.nodes.forEach((node) => {
-      return ctx.fillRect(
+      return this.canvas.fillRect(
         node.x,
         node.y,
-        this.WIDTH * this.SCALE,
-        this.HEIGHT * this.SCALE
+        (this.WIDTH - 1) * this.SCALE,
+        (this.HEIGHT - 1) * this.SCALE
       );
     });
   }
 
-  drawNest(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#c6f7f7";
-    ctx.fillRect(76 * this.SCALE, 1 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(77 * this.SCALE, 1 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(78 * this.SCALE, 1 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(76 * this.SCALE, 2 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(78 * this.SCALE, 2 * this.SCALE, this.SCALE, this.SCALE);
+  drawNest() {
+    this.canvas.fillStyle = "#c6f7f7";
+    this._updateNode(this.nestCenter.x - 1, this.nestCenter.y - 1, "nest");
+    this._updateNode(this.nestCenter.x, this.nestCenter.y - 1, "nest");
+    this._updateNode(this.nestCenter.x + 1, this.nestCenter.y - 1, "nest");
+    this._updateNode(this.nestCenter.x - 1, this.nestCenter.y, "nest");
+    this._updateNode(this.nestCenter.x + 1, this.nestCenter.y, "nest");
+    this._updateNode(this.nestCenter.x - 1, this.nestCenter.y + 1, "nest");
+    this._updateNode(this.nestCenter.x, this.nestCenter.y + 1, "nest");
+    this._updateNode(this.nestCenter.x + 1, this.nestCenter.y + 1, "nest");
   }
 
-  drawFood(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#ed1d9b";
-    ctx.fillRect(115 * this.SCALE, 5 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(110 * this.SCALE, 10 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(115 * this.SCALE, 15 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(120 * this.SCALE, 20 * this.SCALE, this.SCALE, this.SCALE);
+  drawFood(): boolean {
+    this.canvas.fillStyle = "#ed1d9b";
+    const x = Math.round(Math.random() * this.WIDTH);
+    const y = Math.round(Math.random() * (this.HEIGHT - 1));
+    if (
+      Math.abs(this.nestCenter.x - x) < 4 &&
+      Math.abs(this.nestCenter.y - y) < 4
+    ) {
+      console.log("goo!");
+      return false;
+    }
+    //bottom center
+    this._updateNode(x, y, "food");
+    if (x - 1 > -1) {
+      //bottom left 1
+      this._updateNode(x - 1, y, "food");
+    }
+    if (x - 2 > -1) {
+      //bottom left 2
+      this._updateNode(x - 2, y, "food");
+    }
+    if (x + 1 < this.WIDTH) {
+      //bottom right 1
+      this._updateNode(x + 1, y, "food");
+    }
+    if (x + 2 < this.WIDTH) {
+      //bottom right 2
+      this._updateNode(x + 2, y, "food");
+    }
+    if (x - 1 > -1 && y - 1 > -1) {
+      //middle left
+      this._updateNode(x - 1, y - 1, "food");
+    }
+    if (y - 1 > -1) {
+      //middle center
+      this._updateNode(x, y - 1, "food");
+    }
+    if (x + 1 < this.WIDTH && y - 1 > -1) {
+      //middle right
+      this._updateNode(x + 1, y - 1, "food");
+    }
+    if (y - 2 > -1) {
+      //top
+      this._updateNode(x, y - 2, "food");
+    }
+
+    return true;
   }
 
-  drawAnt(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#1bdddd";
-    ctx.fillRect(5 * this.SCALE, 5 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(10 * this.SCALE, 10 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(15 * this.SCALE, 15 * this.SCALE, this.SCALE, this.SCALE);
-    ctx.fillRect(20 * this.SCALE, 20 * this.SCALE, this.SCALE, this.SCALE);
+  drawAnt() {
+    this.canvas.fillStyle = "#1bdddd";
+    this.ants.forEach((ant) => {
+      if (ant.location.x == -1 && ant.location.y == -1) {
+        //init ant
+      } else {
+        return this._updateNode(ant.location.x, ant.location.y, "ant");
+      }
+    });
+  }
+
+  _updateNode(x: number, y: number, type: string) {
+    this.canvas.fillRect(
+      x * this.SCALE,
+      y * this.SCALE,
+      this.SCALE,
+      this.SCALE
+    );
+    const node = this.nodes.find((node) => node.x == x && node.y == y);
+    if (node) {
+      node.type = type;
+    } else {
+      console.log("error");
+      console.log(x);
+      console.log(y);
+    }
   }
 
   // fix() {
