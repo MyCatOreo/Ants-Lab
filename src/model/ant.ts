@@ -1,10 +1,8 @@
-import { Task } from "./_index";
-import { Food } from "./food";
-import { Location } from "./location";
+import { Task, Food, MapNode } from "./_index";
 
 export interface Ant {
   id: string;
-  location: Location;
+  location: MapNode;
   taskCurrent: Task;
   memory: any[]; //TODO
   food?: Food;
