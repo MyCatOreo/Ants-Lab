@@ -281,7 +281,7 @@ export class HomeCnavasService {
         //  _updatePheromon(edge, ants);
       });
 
-      if (this.counter < 1000) {
+      if (this.counter < 20) {
         this.simulate();
       } else {
         // Print result after simulation
@@ -336,67 +336,75 @@ export class HomeCnavasService {
     let allowedEdges = [];
     //left top
     if (ant.location.x != 0 && ant.location.y != 0) {
-      allowedEdges.push({
-        x: ant.location.x - 1,
-        y: ant.location.y - 1,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x - 1 && node.y == ant.location.y - 1
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //left
     if (ant.location.x != 0) {
-      allowedEdges.push({
-        x: ant.location.x - 1,
-        y: ant.location.y,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x - 1 && node.y == ant.location.y
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //left bottom
     if (ant.location.x != 0 && ant.location.y != this.HEIGHT - 1) {
-      allowedEdges.push({
-        x: ant.location.x - 1,
-        y: ant.location.y + 1,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x - 1 && node.y == ant.location.y + 1
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //top
     if (ant.location.y != 0) {
-      allowedEdges.push({
-        x: ant.location.x,
-        y: ant.location.y - 1,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x && node.y == ant.location.y - 1
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //bottom
     if (ant.location.y != this.HEIGHT - 1) {
-      allowedEdges.push({
-        x: ant.location.x,
-        y: ant.location.y + 1,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x && node.y == ant.location.y + 1
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //right top
     if (ant.location.x != this.WIDTH - 1 && ant.location.y != 0) {
-      allowedEdges.push({
-        x: ant.location.x + 1,
-        y: ant.location.y - 1,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x + 1 && node.y == ant.location.y - 1
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //right
     if (ant.location.x != this.WIDTH - 1) {
-      allowedEdges.push({
-        x: ant.location.x + 1,
-        y: ant.location.y,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x + 1 && node.y == ant.location.y
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //right bottom
     if (ant.location.x != this.WIDTH - 1 && ant.location.y != this.HEIGHT - 1) {
-      allowedEdges.push({
-        x: ant.location.x + 1,
-        y: ant.location.y + 1,
-        type: ant.location.type,
-      });
+      const movableNode = this.nodes.find(
+        (node) => node.x == ant.location.x + 1 && node.y == ant.location.y + 1
+      );
+      if (movableNode) {
+        allowedEdges.push(movableNode);
+      }
     }
     //remove nest node if ant is in nest
     if (ant.location.type == "nest") {
@@ -416,7 +424,6 @@ export class HomeCnavasService {
         (edge) => edge.x != lastNode.x && edge.y != lastNode.y
       );
     }
-
     return allowedEdges;
   }
 
