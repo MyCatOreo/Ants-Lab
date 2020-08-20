@@ -1,7 +1,7 @@
 export const ants = [
   {
     id: "0",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -12,7 +12,7 @@ export const ants = [
   },
   {
     id: "1",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -23,7 +23,7 @@ export const ants = [
   },
   {
     id: "2",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -34,7 +34,7 @@ export const ants = [
   },
   {
     id: "3",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -45,7 +45,7 @@ export const ants = [
   },
   {
     id: "4",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -56,7 +56,7 @@ export const ants = [
   },
   {
     id: "5",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -67,7 +67,7 @@ export const ants = [
   },
   {
     id: "6",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -78,7 +78,7 @@ export const ants = [
   },
   {
     id: "7",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -89,7 +89,7 @@ export const ants = [
   },
   {
     id: "8",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -100,7 +100,7 @@ export const ants = [
   },
   {
     id: "9",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -111,7 +111,7 @@ export const ants = [
   },
   {
     id: "10",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -122,7 +122,7 @@ export const ants = [
   },
   {
     id: "11",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -133,7 +133,7 @@ export const ants = [
   },
   {
     id: "12",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -144,7 +144,7 @@ export const ants = [
   },
   {
     id: "13",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -155,7 +155,7 @@ export const ants = [
   },
   {
     id: "14",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -166,7 +166,7 @@ export const ants = [
   },
   {
     id: "15",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -177,7 +177,7 @@ export const ants = [
   },
   {
     id: "16",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -188,7 +188,7 @@ export const ants = [
   },
   {
     id: "17",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -199,7 +199,7 @@ export const ants = [
   },
   {
     id: "18",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -210,7 +210,7 @@ export const ants = [
   },
   {
     id: "19",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",
@@ -221,7 +221,7 @@ export const ants = [
   },
   {
     id: "20",
-    location: { x: -1, y: -1, z: 0 },
+    location: { x: -1, y: -1 },
     taskCurrent: {
       id: "oUezYPzkmB9EUyV6UheZ",
       name: "Forage",

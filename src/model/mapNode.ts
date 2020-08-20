@@ -1,5 +1,7 @@
 export interface MapNode {
   x: number;
   y: number;
-  type?: "blank" | "food" | "water" | "ant" | "nest";
+  type?: "blank" | "water" | "nest";
+  ant?: number;
+  food?: number;
 }
